@@ -48,7 +48,7 @@ export default function Web() {
                 enjoyable development process.
               </Text>
               <HStack justify="center" spacing={4}>
-                <Button href="https://github.com/Blazity/next-enterprise" className="mr-3">
+                <Button href="https://github.com/keepkey/keepkey-template" className="mr-3">
                   Get started
                 </Button>
                 <Button href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise" variant="outline">
