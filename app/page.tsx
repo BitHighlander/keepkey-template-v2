@@ -1,6 +1,7 @@
-import { Metadata } from "next"
-import { Button } from "components/Button/Button"
-import { LP_GRID_ITEMS } from "lp-items"
+import { Metadata } from "next";
+import { Button } from "components/Button/Button";
+import { LP_GRID_ITEMS } from "lp-items";
+import { Box, Container, Flex, Heading, Text, VStack, HStack, Link, Icon } from "@chakra-ui/react";
 
 export const metadata: Metadata = {
   title: "Next.js Enterprise Boilerplate",
@@ -17,58 +18,63 @@ export const metadata: Metadata = {
       },
     ],
   },
-}
+};
 
 export default function Web() {
   return (
       <>
-        <header className="bg-gray-800 text-white p-4">
-          <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold">Enterprise Boilerplate</h1>
-            <nav>
-              <a href="#home" className="mr-4 hover:underline">Home</a>
-              <a href="#features" className="hover:underline">Features</a>
-            </nav>
-          </div>
-        </header>
-        <section className="bg-white dark:bg-gray-900">
-          <div className="mx-auto grid max-w-screen-xl px-4 py-8 text-center lg:py-16">
-            <div className="mx-auto place-self-center">
-              <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
+        <Box as="header" bg="gray.800" color="white" p={4}>
+          <Container maxW="container.xl">
+            <Flex justify="space-between" align="center">
+              <Heading as="h1" size="lg">Enterprise Boilerplate</Heading>
+              <nav>
+                <HStack spacing={4}>
+                  <Link href="#home" _hover={{ textDecoration: "underline" }}>Home</Link>
+                  <Link href="#features" _hover={{ textDecoration: "underline" }}>Features</Link>
+                </HStack>
+              </nav>
+            </Flex>
+          </Container>
+        </Box>
+        <Box as="section" bg="white" _dark={{ bg: "gray.900" }} py={{ base: 8, lg: 16 }}>
+          <Container maxW="container.xl" textAlign="center">
+            <Box>
+              <Heading as="h1" size="2xl" mb={4} fontWeight="extrabold" lineHeight="tight">
                 Next.js Enterprise Boilerplate
-              </h1>
-              <p className="mb-6 max-w-2xl font-light text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl">
+              </Heading>
+              <Text mb={6} fontSize={{ base: "lg", lg: "xl" }} color="gray.500" _dark={{ color: "gray.400" }}>
                 Jumpstart your enterprise project with our feature-packed, high-performance Next.js boilerplate!
                 Experience rapid UI development, AI-powered code reviews, and an extensive suite of tools for a smooth and
                 enjoyable development process.
-              </p>
-              <Button href="https://github.com/Blazity/next-enterprise" className="mr-3">
-                Get started
-              </Button>
-              <Button
-                  href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise"
-                  intent="secondary"
-              >
-                Deploy Now
-              </Button>
-            </div>
-          </div>
-        </section>
-        <section className="bg-white dark:bg-gray-900">
-          <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6">
-            <div className="justify-center space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
-              {LP_GRID_ITEMS.map((singleItem) => (
-                  <div key={singleItem.title} className="flex flex-col items-center justify-center text-center">
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 p-1.5 text-blue-700 dark:bg-primary-900 lg:h-12 lg:w-12">
-                      {singleItem.icon}
-                    </div>
-                    <h3 className="mb-2 text-xl font-bold dark:text-white">{singleItem.title}</h3>
-                    <p className="text-gray-500 dark:text-gray-400">{singleItem.description}</p>
-                  </div>
-              ))}
-            </div>
-          </div>
-        </section>
+              </Text>
+              <HStack justify="center" spacing={4}>
+                <Button href="https://github.com/Blazity/next-enterprise" className="mr-3">
+                  Get started
+                </Button>
+                <Button href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise" variant="outline">
+                  Deploy Now
+                </Button>
+              </HStack>
+            </Box>
+          </Container>
+        </Box>
+        <Box as="section" bg="white" _dark={{ bg: "gray.900" }} py={{ base: 8, sm: 16 }} px={{ lg: 6 }}>
+          <Container maxW="container.xl">
+            <VStack spacing={8} align="stretch" justify="center">
+              <Flex wrap="wrap" justify="center" spacing={12}>
+                {LP_GRID_ITEMS.map((singleItem) => (
+                    <Box key={singleItem.title} textAlign="center" flex="1" maxW="sm" p={4}>
+                      <Flex justify="center" align="center" mb={4} w={12} h={12} bg="primary.100" color="blue.700" rounded="full" p={1.5}>
+
+                      </Flex>
+                      <Heading as="h3" size="md" mb={2}>{singleItem.title}</Heading>
+                      <Text color="gray.500" _dark={{ color: "gray.400" }}>{singleItem.description}</Text>
+                    </Box>
+                ))}
+              </Flex>
+            </VStack>
+          </Container>
+        </Box>
       </>
-  )
+  );
 }
